@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace Managers
+namespace Gameplay
 {
-    public interface IGameLoop : IManager
+    public interface IGameLoop : IDefaultInitialized
     {
         event Action OnStartGame;        
         event Action OnEndGame;        

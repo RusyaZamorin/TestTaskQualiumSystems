@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Managers
+namespace Gameplay
 {
-    public interface IPhysicalScreen : IManager
+    public interface IPhysicalScreen : IDefaultInitialized
     {
         Rect GetBoundsRect();        
     }

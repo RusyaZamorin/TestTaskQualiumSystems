@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Managers
+namespace Gameplay
 {
     public interface IEnemiesBehaviorController
     {
