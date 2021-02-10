@@ -6,7 +6,13 @@ namespace Managers
 {
     public interface IEnemySpawner
     {
+        void Init(PhysicalScreenBounds physicalScreenBounds);
+
         void CreateEnemy();
+
+        void StartSpawn();
+
+        void StopSpawn();
     }
 }
 
