@@ -8,7 +8,7 @@ namespace Gameplay
     {
         void Init(IEnemySpawner enemySpawner);
 
-        void SetStartParametrs(float currentEnemiesSpeed, float speedChangeStep, float timeIntervalSpeedChange);
+        void ResetToStartSpeedSetting();
 
         void StartSpeedIncreaseCycle();
 

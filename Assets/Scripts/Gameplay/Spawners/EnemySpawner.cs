@@ -37,15 +37,9 @@ namespace Gameplay
             OnCreateEnemy?.Invoke(enemyObj.GetComponent<IEnemy>());
         }
 
-        public void StartSpawn()
-        {
-            StartCoroutine(Spawn());
-        }
+        public void StartSpawn() => StartCoroutine(Spawn());
 
-        public void StopSpawn()
-        {
-            StopCoroutine(Spawn());
-        }
+        public void StopSpawn() => StopAllCoroutines();        
 
         private IEnumerator Spawn()
         {

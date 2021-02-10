@@ -8,28 +8,28 @@ namespace Gameplay
     {
         
         [SerializeField] private float _timeIntervalSpeedChange = 5f;
-        [SerializeField] private float _currentEnemiesSpeed = 3f;
+        [SerializeField] private float _startEnemiesSpeed = 3f;        
         [SerializeField] private float _speedChangeStep = 0.2f;
-        
+
+        private float _currentEnemiesSpeed;
+
         private List<IEnemy> _enemies;
 
         public void Init(IEnemySpawner enemySpawner)
         {            
             _enemies = new List<IEnemy>();
+            ResetToStartSpeedSetting();
 
             enemySpawner.OnCreateEnemy += AddEnemyToList;
         }
-
-        public void SetStartParametrs(float currentEnemiesSpeed, float speedChangeStep, float timeIntervalSpeedChange)
+        public void ResetToStartSpeedSetting()
         {
-            _currentEnemiesSpeed = currentEnemiesSpeed;
-            _speedChangeStep = speedChangeStep;
-            _timeIntervalSpeedChange = timeIntervalSpeedChange;
+            _currentEnemiesSpeed = _startEnemiesSpeed;
         }
 
         public void StartSpeedIncreaseCycle() => StartCoroutine(SpeedIncreaseCycle());        
 
-        public void StopSpeedIncreaseCycle() => StopCoroutine(SpeedIncreaseCycle());
+        public void StopSpeedIncreaseCycle() => StopAllCoroutines();
 
         private void AddEnemyToList(IEnemy enemy)
         {

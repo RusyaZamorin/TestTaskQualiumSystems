@@ -47,19 +47,17 @@ namespace Gameplay
 
         private void Move()
         {
-            transform.Translate(_moveDirection * _moveSpeed * Time.fixedDeltaTime);
+            if(gameObject.activeInHierarchy)
+                transform.Translate(_moveDirection * _moveSpeed * Time.fixedDeltaTime);
         }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.CompareTag("enemy"))
-                OnCollisionWithEnemy?.Invoke();
-        }
-
+        
         private void OnTriggerEnter2D(Collider2D col)
-        {
+        {            
             if (col.gameObject.CompareTag("enemy"))
+            {               
                 OnCollisionWithEnemy?.Invoke();
+                Destroy();
+            }                
         }
     }
 }

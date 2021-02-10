@@ -5,10 +5,13 @@ using System;
 
 namespace Gameplay
 {
-    public interface IGameLoop : IDefaultInitialized
+    public interface IGameLoop
     {
         event Action OnStartGame;        
-        event Action OnEndGame;        
+        event Action OnEndGame;
+        event Action OnRestartGame;
+
+        void Init(IPlayer player, IEnemySpawner enemySpawner, IEnemiesBehaviorController enemiesBehaviorController);
 
         void StartGame();
 

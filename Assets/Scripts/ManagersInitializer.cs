@@ -16,19 +16,20 @@ public class ManagersInitializer : MonoBehaviour
         _physicalScreenBounds.Init();
 
         _player?.Init();
-        _enemySpawner?.Init(_physicalScreenBounds);
+        _enemySpawner?.Init(_physicalScreenBounds);        
+        _enemiesBehaviorController.Init(_enemySpawner);
+        var gameLoop = new GameLoop();
+        gameLoop.Init(_player, _enemySpawner, _enemiesBehaviorController);
+
         _inputHandler?.Init(_player);
 
-        _enemiesBehaviorController.Init(_enemySpawner);
-
-        _enemySpawner.StartSpawn();
-        _enemiesBehaviorController.StartSpeedIncreaseCycle();
 
         RegisterManager<IPhysicalScreenBounds>(_physicalScreenBounds);
         RegisterManager<IPlayer>(_player);
         RegisterManager<IEnemySpawner>(_enemySpawner);
         RegisterManager<IEnemiesBehaviorController>(_enemiesBehaviorController);
         RegisterManager<IInputHandler>(_inputHandler);
+        RegisterManager<IGameLoop>(gameLoop);
     }
     
     private void Awake()
