@@ -15,6 +15,8 @@ namespace Managers
         private Vector2 _halfEnemySize;
         private ObjectPool _enemyPool;
 
+        public event System.Action<IEnemy> OnCreateEnemy;
+
         public void Init(PhysicalScreenBounds physicalScreenBounds)
         {
             _spawnBounds = physicalScreenBounds.GetBoundsRect();
@@ -30,7 +32,9 @@ namespace Managers
             float xPosition = Random.Range(_spawnBounds.xMin + _halfEnemySize.x, _spawnBounds.xMax - _halfEnemySize.x);
             Vector3 position = new Vector3(xPosition, _spawnBounds.yMax + _halfEnemySize.y, 0f);
 
-            var enemyObj = _enemyPool.TakeObject(_enemyPrefab, position, Quaternion.identity, _enemyContainer);            
+            var enemyObj = _enemyPool.TakeObject(_enemyPrefab, position, Quaternion.identity, _enemyContainer);
+
+            OnCreateEnemy?.Invoke(enemyObj.GetComponent<IEnemy>());
         }
 
         public void StartSpawn()

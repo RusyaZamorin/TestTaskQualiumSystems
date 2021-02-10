@@ -6,19 +6,23 @@ namespace Managers
 {
     public class ManagersInitializer : MonoBehaviour
     {
-        [SerializeField] Player _player;
-        [SerializeField] InputHandler _inputHandler;
-        [SerializeField] PhysicalScreenBounds _physicalScreenBounds;
-        [SerializeField] EnemySpawner _enemySpawner;
+        [SerializeField] private Player _player;
+        [SerializeField] private InputHandler _inputHandler;
+        [SerializeField] private PhysicalScreenBounds _physicalScreenBounds;
+        [SerializeField] private EnemySpawner _enemySpawner;
+        [SerializeField] private EnemiesBehaviorController _enemiesBehaviorController;
         private void Init()
         {
             _physicalScreenBounds.Init();
             
             _player?.Init();
-
             _enemySpawner?.Init(_physicalScreenBounds);
-            _enemySpawner.StartSpawn();
             _inputHandler?.Init(_player);
+
+            _enemiesBehaviorController.Init(_enemySpawner);
+
+            _enemySpawner.StartSpawn();
+            _enemiesBehaviorController.StartSpeedIncreaseCycle();
         }
 
         private void Awake()
