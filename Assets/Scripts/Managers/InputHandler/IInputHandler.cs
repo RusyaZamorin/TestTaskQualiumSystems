@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Managers
 {
-    public interface IInputHandler : IManager
+    public interface IInputHandler
     {
-        void Update();
+        void Init(IPlayer player);
     }
 }
 

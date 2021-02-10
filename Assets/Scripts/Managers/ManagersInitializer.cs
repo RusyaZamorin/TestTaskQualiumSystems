@@ -4,11 +4,15 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class ManagerInitializer : MonoBehaviour
+    public class ManagersInitializer : MonoBehaviour
     {
+        [SerializeField] Player _player;
+        [SerializeField] InputHandler _inputHandler;
+        
         private void Init()
         {
-
+            _player?.Init();
+            _inputHandler?.Init(_player);
         }
 
         private void Awake()

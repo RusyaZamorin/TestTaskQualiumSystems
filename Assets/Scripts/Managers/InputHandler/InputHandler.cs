@@ -4,16 +4,27 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class InputHandler : IInputHandler
+    public class InputHandler : MonoBehaviour
     {
-        public void Init()
-        {
-            
+        private IPlayer _player;
+
+        public void Init(IPlayer player) => _player = player;        
+
+        private void HandleTouch()
+        {                        
+            if(Input.GetKey(KeyCode.D))
+            {                
+                _player.MoveRight();
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {                
+                _player.MoveLeft();
+            }
         }
 
-        public void Update()
-        {
-            
+        private void FixedUpdate()
+        {            
+            HandleTouch();
         }
     }
 }
