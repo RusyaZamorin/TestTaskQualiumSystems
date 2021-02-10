@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    public interface IPhysicalScreen : IDefaultInitialized
+    public interface IPhysicalScreenBounds : IDefaultInitialized
     {
         Rect GetBoundsRect();        
     }

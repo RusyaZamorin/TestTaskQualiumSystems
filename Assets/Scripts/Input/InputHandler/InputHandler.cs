@@ -5,7 +5,7 @@ using Gameplay;
 
 namespace InputModule
 {
-    public class InputHandler : MonoBehaviour
+    public class InputHandler : MonoBehaviour, IInputHandler
     {
         private IPlayer _player;
 

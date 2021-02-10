@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    public class PhysicalScreenBounds : MonoBehaviour, IPhysicalScreen
+    public class PhysicalScreenBounds : MonoBehaviour, IPhysicalScreenBounds
     {
         [SerializeField] Transform _leftBound;
         [SerializeField] Transform _rightBound;

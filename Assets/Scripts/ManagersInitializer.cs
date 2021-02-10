@@ -23,6 +23,12 @@ public class ManagersInitializer : MonoBehaviour
 
         _enemySpawner.StartSpawn();
         _enemiesBehaviorController.StartSpeedIncreaseCycle();
+
+        RegisterManager<IPhysicalScreenBounds>(_physicalScreenBounds);
+        RegisterManager<IPlayer>(_player);
+        RegisterManager<IEnemySpawner>(_enemySpawner);
+        RegisterManager<IEnemiesBehaviorController>(_enemiesBehaviorController);
+        RegisterManager<IInputHandler>(_inputHandler);
     }
     
     private void Awake()
@@ -30,6 +36,10 @@ public class ManagersInitializer : MonoBehaviour
         InitializeManagers();
     }
     
+    private void RegisterManager<T>(T manager)
+    {
+        ManagersContainer.AddManager(manager);
+    }
 }
 
 
