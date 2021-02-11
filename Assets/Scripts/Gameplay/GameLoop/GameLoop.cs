@@ -47,6 +47,11 @@ namespace Gameplay
             OnEndGame?.Invoke();
         }
 
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
+
         private void RunGameActions()
         {
             _player.Init();

@@ -18,6 +18,8 @@ namespace Gameplay
         void EndGame();
 
         void RestartGame();
+
+        void QuitGame();
     }
 }
 
