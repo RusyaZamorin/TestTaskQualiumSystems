@@ -14,9 +14,12 @@ namespace Gameplay
 
         public void Destroy()
         {
-            gameObject.SetActive(false);
+            if (gameObject.activeInHierarchy)
+            {
+                gameObject.SetActive(false);
 
-            OnDestroy?.Invoke();
+                OnDestroy?.Invoke();
+            }
         }
 
         public void SetSpeed(float speed) => _moveSpeed = speed;

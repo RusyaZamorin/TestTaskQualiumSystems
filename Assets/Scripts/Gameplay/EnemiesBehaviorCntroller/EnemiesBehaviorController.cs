@@ -22,6 +22,7 @@ namespace Gameplay
 
             enemySpawner.OnCreateEnemy += AddEnemyToList;
         }
+
         public void ResetToStartSpeedSetting()
         {
             _currentEnemiesSpeed = _startEnemiesSpeed;
@@ -31,6 +32,12 @@ namespace Gameplay
 
         public void StopSpeedIncreaseCycle() => StopAllCoroutines();
 
+        public void DeactivateAllEnemies()
+        {
+            foreach (var enemy in _enemies)
+                enemy.Destroy();
+        }
+
         private void AddEnemyToList(IEnemy enemy)
         {
             if (_enemies.Contains(enemy) == false)
@@ -38,8 +45,8 @@ namespace Gameplay
                 _enemies.Add(enemy);
                 enemy.SetSpeed(_currentEnemiesSpeed);
             }
-        }   
-        
+        }                   
+
         private IEnumerator SpeedIncreaseCycle()
         {
             while(true)

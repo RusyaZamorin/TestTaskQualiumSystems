@@ -42,6 +42,7 @@ namespace Gameplay
         {            
             _enemySpawner.StopSpawn();
             _enemiesBehaviorController.StopSpeedIncreaseCycle();
+            _enemiesBehaviorController.DeactivateAllEnemies();
 
             OnEndGame?.Invoke();
         }

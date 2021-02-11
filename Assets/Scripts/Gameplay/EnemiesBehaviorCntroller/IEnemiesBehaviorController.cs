@@ -13,6 +13,8 @@ namespace Gameplay
         void StartSpeedIncreaseCycle();
 
         void StopSpeedIncreaseCycle();
+
+        void DeactivateAllEnemies();
     }
 }
 

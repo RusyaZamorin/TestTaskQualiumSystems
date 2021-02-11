@@ -8,18 +8,26 @@ namespace InputModule
     public class InputHandler : MonoBehaviour, IInputHandler
     {
         private IPlayer _player;
+        private float xCentrPoint;
 
-        public void Init(IPlayer player) => _player = player;        
+        public void Init(IPlayer player)
+        {
+            _player = player;
+
+            xCentrPoint = Screen.width / 2f;
+        }
 
         private void HandleTouch()
         {                        
-            if(Input.GetKey(KeyCode.D))
-            {                
-                _player.MoveRight();
-            }
-            else if (Input.GetKey(KeyCode.A))
-            {                
-                _player.MoveLeft();
+            if(Input.touchCount > 0)
+            {
+                var touch = Input.GetTouch(0);
+                Debug.Log(touch.position);
+
+                if (touch.position.x < xCentrPoint)
+                    _player.MoveLeft();
+                else
+                    _player.MoveRight();
             }
         }
 
